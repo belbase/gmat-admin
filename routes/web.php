@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/','DefaultController@index')->name('home');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// @if ($request->session()->has('warning'))
+//   {!! $request->session()->get('warning') !!}
+// @endif

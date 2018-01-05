@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+// use Illuminate\Contracts\Auth\Authenticatable;
+// use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -27,5 +29,5 @@ class Admin extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $table = 'admins';
+    // protected $table = 'admins';
 }

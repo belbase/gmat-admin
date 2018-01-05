@@ -1,0 +1,50 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.grey{
+  background-color: #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+
+}
+.btn-panel{
+  background-color: #006eae;
+  color:#fff;
+  border-radius: 0;
+  border:3px solid #fff;
+}
+#doc{
+  background-color:#006eae;
+  height:700px;
+}
+.header{
+    color:#fff;
+   height:10%;
+}
+.timer{
+  padding:10px;
+}
+.lower-header{
+  color:#fff;
+  background-color:#7dafe1;
+  border:2px solid #fff;
+  height:5%;
+}
+.main{
+  height:75%;
+  background-color:#fff;
+  padding-top:5px;
+}
+.footer {
+  padding-top:5px; height:5%
+}
+.division{
+  height:50%;
+}
+.overlap{
+  height:300px;
+  overflow-y: scroll;
+  position:static;
+}
