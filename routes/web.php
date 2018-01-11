@@ -12,8 +12,12 @@
 */
 
 Route::get('/','DefaultController@index')->name('home');
+Route::post('/question/add', 'QuestionController@add')->name('question-add');
+Route::post('/question/edit', 'QuestionController@edit')->name('question-edit');
+Route::post('/question/delete','QuestionController@delete')->name('question-delete');
+
+Route::get('/question/{name}', 'QuestionController@index')->name('question-index');
 Auth::routes();
 
-// @if ($request->session()->has('warning'))
-//   {!! $request->session()->get('warning') !!}
-// @endif
+
+// Route::get('/home', 'HomeController@index')->name('home');
