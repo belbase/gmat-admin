@@ -111,8 +111,8 @@ return [
       [
         'text' => 'Dashboard',
         'url'  => '',
-        'icon' => 'file',
-        'active' => [''],
+        'icon' => 'dashboard',
+        // 'active' => [''],
       ],
         'MAIN NAVIGATION',
         // [
@@ -151,17 +151,22 @@ return [
                 ],
             ],
         ],
-        // // 'ACCOUNT SETTINGS',
-        // [
-        //     'text' => 'Profile',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'user',
-        // ],
-        // [
-        //     'text' => 'Change Password',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'lock',
-        // ],
+        'ACCOUNT SETTINGS',
+        [
+            'text' => 'Profile',
+            'url'  => '#',
+            'icon' => 'user',
+        ],
+        [
+            'text' => 'Change Password',
+            'url'  => '#',
+            'icon' => 'lock',
+        ],
+        [
+            'text' => 'Manage Users',
+            'url'  => '#',
+            'icon' => 'lock',
+        ],
         // [
             // 'text'    => 'Multilevel',
             // 'icon'    => 'share',

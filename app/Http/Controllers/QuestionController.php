@@ -34,7 +34,7 @@ class QuestionController extends Controller
       $db=$request->all()['section'];
       $url='question/'.strtolower($db);
       if(url()->previous()==url($url))
-      return view('question.editor')->with([
+      return view('question.add')->with([
         'title' => 'Add new Questions',
         'db'=> $db,
       ]);
@@ -48,7 +48,7 @@ class QuestionController extends Controller
       $content=\App\Model\Questions::find($id);
       $url='question/'.strtolower($db);
       if(url()->previous()==url($url))
-      return view('question.editor')->with([
+      return view('question.add')->with([
         'title' => 'Edit '.$db.' ',
         'db' => $db,
         'id' => $id,
