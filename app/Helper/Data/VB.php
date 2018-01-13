@@ -12,7 +12,7 @@ class VB
   {
     $data = $request->all();
     $table = new Questions;
-    $table->title = $data['title'];
+    // $table->title = $data['title'];
     $table->passage= $data['question'];
     $table->cat =$data['cata'];
     $table->dif = $data['dif'];
@@ -38,7 +38,7 @@ class VB
   {
     $data = $request->all();
     $table = Questions::findorfail($data['id']);
-    $table->title = $data['title'];
+    // $table->title = $data['title'];
     $table->passage= $data['question'];
     $table->cat =$data['cata'];
     $table->dif = $data['dif'];
