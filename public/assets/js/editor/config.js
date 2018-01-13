@@ -9,4 +9,4 @@ CKEDITOR.editorConfig = function( config ) {
     config.removePlugins = 'resize';
     config.resize_enabled = false;
 };
-console.log($(".opt").height);
+// console.log($(".opt").height);

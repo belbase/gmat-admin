@@ -2,7 +2,7 @@
 namespace App\Helper\Data;
 use \App\Model\Questions;
 /**
- * This Helper Helpes the Question Fourm to save the Quewstion via AJAX Request
+ * This Helper Helpes the Question Fourm to save the Question via AJAX Request
  * @package EduShastra Online Mock Test
  * @author Deepak Belbase
  */
@@ -12,7 +12,7 @@ class AW
   {
     $table = new Questions;
     $data= $request->all();
-    $table->title = $data['title'];
+    // $table->title = $data['title'];
     $table->passage= $data['question'];
     $table->sec_id=2;
     $table->status=1;
@@ -24,7 +24,7 @@ class AW
     $data = $request->all();
     $table = Questions::findorfail($data['id']);
     $table->qid = $data['id'];
-    $table->title = $data['title'];
+    // $table->title = $data['title'];
     $table->passage= $data['question'];
     $table->save();
     return "Updated to Analytical Working Assignment Table";

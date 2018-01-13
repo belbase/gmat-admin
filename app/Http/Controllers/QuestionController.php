@@ -81,6 +81,7 @@ class QuestionController extends Controller
       }
       else{
         $class= "\App\Helper\Data\\".strtoupper($data['section'])."::delete";
+        $class($request);
         return redirect('question/'.strtolower($data['section']))->with('success','The Data has been Sucessfully Removed');
 
       }

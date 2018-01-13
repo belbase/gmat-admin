@@ -41,80 +41,10 @@ function addOptions(){
 function selectTypeOption(){
   if($("#cata").find("option:first-child").val()){
     eval("set" + $("#cata").find("option:first-child").val() + "()");
+    console.log("Qusetion.js is properly working");
   }
   $("#cata").on('change',function(){
     var val = $("#cata option:selected").val();
         eval("set" + val + "()");
   });
-}
-function insertSTIGT(){
-  return {
-    // statement : $("#statement").val(),
-    // option :{},
-    //
-    other: false
-    };
-}
-function insertBMCQC(){
-  return {
-    // statement : $("#statement").val(),
-    // option :{},
-    //
-    other: false
-    };
-}
-function insertBMCQR(){
-  return {
-    // statement : $("#statement").val(),
-    // option :{},
-    //
-    other: false
-  };
-}
-function insertSMCQT(){
-  var options = [];
-    $('.option-input').each(function () {
-      var option = new Object();
-      option.oid = $(this).attr('name');
-      option.id = $(this).attr('id');
-      option.content = $(this).val();
-      if(typeof option.oid == 'undefined') option.is_correct= $("#is_correct-"+option.id).is(":checked");
-      else option.is_correct= $("#is_correct-"+option.oid).is(":checked");
-      options.push({
-          option});
-          console.log("#is_correct-"+option.id);
-  });
-  return {
-    _token:$("input[name=_token]").val(),
-    title:$("input[name=title]").val(),
-    statement:$("input[name=statement]").val(),
-    question:$("#editor").children().html(),
-    type:$("select[name=type] option:selected").val(),
-    cata:$("select[name=cata] option:selected").val(),
-    table:$("input[name=db]").val(),
-    id:$("input[name=id]").val(),
-    dif:$("select[name=dif] option:selected").val(),
-    option:options,
-   };
-  }
-
-function insertPRGOT(){
-    return { _token:$("input[name=_token]").val(),
-       title:$("input[name=title]").val(),
-      question:$("#editor").children().html(),
-      cata:$("select[name=cata] option:selected").val(),
-      table:$("input[name=db]").val(),
-      id:$("input[name=id]").val(),
-     };
-}
-function getTypeOption(){
-    var val = $("#cata option:selected").val();
-        return eval("insert" + val + "();");
-}
-function btalert(alertType,message){
-  var indicator = [];
-  indicator["success"] = "Okay!";
-  indicator["danger"] = "No!";
-  indicator["warning"] = "Attention!";
-  $("#page-top").prepend('<div class="col-md-10 offset-md-1 alert alert-'+alertType+' alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>'+indicator[alertType]+'</strong>! '+message+'</div>');
 }

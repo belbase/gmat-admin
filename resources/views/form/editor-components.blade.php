@@ -151,14 +151,3 @@
     </div>
   <!-- /.box-body -->
 </div>
-
-@section('js')
-  <script src="{{ asset('/assets/js/question.js') }}" charset="utf-8"></script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      addOptions();
-      hideall();
-      selectTypeOption();
-    });
-  </script>
-@stop

@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>FARAIS</b>10',
+    'logo' => '<b>FARAIS</b>1.0',
 
-    'logo_mini' => '<b>F</b>TEN',
+    'logo_mini' => '<b>F</b>1.0',
 
     /*
     |--------------------------------------------------------------------------
@@ -127,12 +127,22 @@ return [
                 [
                     'text' => 'Analytical Writing Assignment',
                     'url'  => 'question/aw',
-                    'icon_color' => 'aqua',
+                    'icon_color' => 'blue',
                 ],
                 [
                   'text' => 'Verbal',
                   'url'  => 'question/vb',
                   'icon_color' => 'yellow',
+                ],
+                [
+                  'text' => 'Quantitative',
+                  'url'  => 'question/qa',
+                  'icon_color' => 'green',
+                ],
+                [
+                  'text' => 'Integrated Reasoning',
+                  'url'  => 'question/ir',
+                  'icon_color' => 'red',
                 ],
                 // [
                 //     'text' => 'Level One',
