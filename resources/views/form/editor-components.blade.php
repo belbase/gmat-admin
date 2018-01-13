@@ -13,11 +13,14 @@
     <div class="form-group">
         <select class="form-control" name="cata" id="cata" required>
           @if (isset($content->cat))
-            <option value="{{ $content->cat }}" selected> {{ \App\Helper\QuestionCatagory::get($content->cat) }} </option>
+            @foreach ($arrangement->sub($content->cat) as $key => $value)
+              <option value="{{ $key }}">{{ $value }}</option>
+            @endforeach
+          @else
+            @foreach ($arrangement->sub() as $key => $value)
+              <option value="{{ $key }}">{{ $value }}</option>
+            @endforeach
           @endif
-          @foreach (\App\Helper\QuestionCatagory::all() as $key => $value)
-            <option value="{{ $key }}">{{ $value }}</option>
-          @endforeach
         </select>
     </div>
   </div>
@@ -38,11 +41,15 @@
     <div class="form-group">
         <select class="form-control" name="dif" required>
           @if (isset($content->dif))
-            <option value="{{ $content->dif }}" selected> {{ \App\Helper\DifficultyLevel::get($content->dif) }} </option>
+            @foreach ($arrangement->dif($content->dif) as $key => $value)
+              <option value="{{ $key }}">{{ $value }}</option>
+            @endforeach
+          @else
+            @foreach ($arrangement->dif() as $key => $value)
+              <option value="{{ $key }}">{{ $value }}</option>
+            @endforeach
           @endif
-          @foreach (\App\Helper\DifficultyLevel::all() as $key => $value)
-            <option value="{{ $key }}">{{ $value }}</option>
-          @endforeach
+
         </select>
     </div>
   </div>
@@ -57,18 +64,6 @@
       </button>
     </div>
     <!-- /.box-tools -->
-  </div>
-  <!-- /.box-header -->
-  <div class="box-body">
-    <div class="form-group">
-        <select class="form-control" name="type" required>
-          @if (isset($content->type))
-          <option value="{{ $content->type }}"> {{ ucfirst($content->type) }} </option>
-          @endif
-          <option value="simple"> Simple </option>
-          <option value="passage"> Passage </option>
-        </select>
-    </div>
   </div>
   <!-- /.box-body -->
 </div>

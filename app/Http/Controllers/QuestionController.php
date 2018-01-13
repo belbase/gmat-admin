@@ -15,7 +15,7 @@ class QuestionController extends Controller
     public function index($db='AW'){
       $db= strtoupper($db);
       if(\App\Helper\SectionArray::checkRef($db)){
-
+        $arrangement= "App\Helper\GMAT\Arrangement\\".strtoupper($db);
         $database = \App\Model\Questions::where('sec_id','=',\App\Helper\SectionArray::getID($db))->get();
         $data = $database;
 
@@ -23,7 +23,8 @@ class QuestionController extends Controller
               'title'=>'Question - '.\App\Algorithm\Questions\Section::getSection($db),
               'data'=> $data,
               'section'=>\App\Helper\SectionArray::getNameFromRef($db),
-              'db'=>$db
+              'db'=>$db,
+              'arrangement'=>new $arrangement,
             ]);
           }
           else{
@@ -33,10 +34,12 @@ class QuestionController extends Controller
     public function add(Request $request){
       $db=$request->all()['section'];
       $url='question/'.strtolower($db);
+      $arrangement= "App\Helper\GMAT\Arrangement\\".strtoupper($db);
       if(url()->previous()==url($url))
       return view('question.add')->with([
         'title' => 'Add new Questions',
         'db'=> $db,
+        'arrangement'=>new $arrangement,
       ]);
       else{
         abort(403,"Standard Abolishment");
@@ -44,6 +47,7 @@ class QuestionController extends Controller
     }
     public function edit(Request $request){
       $db=$request->all()['section'];
+      $arrangement= "App\Helper\GMAT\Arrangement\\".strtoupper($db);
       $id=$request->all()['id'];
       $content=\App\Model\Questions::find($id);
       $url='question/'.strtolower($db);
@@ -54,6 +58,7 @@ class QuestionController extends Controller
         'id' => $id,
         'content'=>$content,
         'options'=>$content->options,
+        'arrangement'=>new $arrangement,
       ]);
       else{
         abort(403,"Standard Abolishment");

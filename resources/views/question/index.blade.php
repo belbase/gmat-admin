@@ -45,6 +45,7 @@
         <thead>
         <tr>
           <th>Title</th>
+          <th>Catagory</th>
           <th>Action</th>
           <th>Modified On</th>
         </tr>
@@ -90,8 +91,8 @@
                   {{-- /.modal-dialog --}}
                 </div>
                 {{--  /.modal --}}
-
               </td>
+              <td>{!! $arrangement->getSub($item->cat) !!}</td>
               <td>
                 <form action="/question/edit" method="post">
                 {!! csrf_field() !!}

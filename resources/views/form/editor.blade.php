@@ -16,15 +16,74 @@
 <!-- /.box -->
 @section('js')
   <script src="https://rawgit.com/Biggo6/biggojs/master/biggo.js"></script>
-  <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+  <script src="{{ asset('/assets/vendor/ckeditor/ckeditor.js') }}"></script>
   {{-- <script src="//cdn.quilljs.com/1.3.4/quill.js"></script> --}}
   <script src="{{ asset('/assets/js/question.js') }}" charset="utf-8"></script>
   <script type="text/javascript">
     $(document).ready(function(){
       // initialize the CKEditor
       var editor = CKEDITOR.replace('editor',{
-        customConfig: '/assets/js/editor/config.js'
+        customConfig: '/assets/js/editor/config.js',
+        extraPlugins: 'bootstrapTabs',
+        contentsCss: [ 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' ],
+        on: {
+          instanceReady: loadBootstrap,
+          mode: loadBootstrap
+        },
+        // dataParser: imguploader(data)
       });
+      editor.config.imageUploadURL= '{{ url('/upload_image') }}';
+      editor.config.dataParser= function(data){
+        console.log(data);
+      }
+      // Add the necessary jQuery and Bootstrap JS source so that tabs are clickable.
+      // If you're already using Bootstrap JS with your editor instances, then this is not necessary.
+      function loadBootstrap(event) {
+          if (event.name == 'mode' && event.editor.mode == 'source')
+              return; // Skip loading jQuery and Bootstrap when switching to source mode.
+
+          var jQueryScriptTag = document.createElement('script');
+          var bootstrapScriptTag = document.createElement('script');
+
+          jQueryScriptTag.src = 'https://code.jquery.com/jquery-1.11.3.min.js';
+          bootstrapScriptTag.src = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
+
+          var editorHead = event.editor.document.$.head;
+
+          editorHead.appendChild(jQueryScriptTag);
+          jQueryScriptTag.onload = function() {
+            editorHead.appendChild(bootstrapScriptTag);
+          };
+      }
+      editor.on( 'fileUploadRequest', function( evt ) {
+        var image= this.filname;
+        var token = {{  csrf_token()}};
+
+        var isFileUpload = false;
+        var data;
+        isFileUpload = true;
+        var data = new FormData();
+        data.append( 'image', image);
+        data.append('_token',token);
+
+        var biggo = Biggo.talkToServer('upload/image', data, isFileUpload, 'post', 'text');
+        biggo.then(function(res){
+        if(res.error){
+              btalert('danger','Image Not Uploaded');
+              $(".loader-icon").fadeOut('slow');
+            }
+        else{
+            var image= "/assets//"+res;
+            setImagevalue(image);
+            }
+          });
+      });
+      // function imguploader(data){
+      //   $.ajax({
+      //     url: '/question/upload',
+      //
+      //   });
+      // }
       function insertSTIGT(){
         return {
           // statement : $("#statement").val(),
@@ -49,7 +108,7 @@
           other: false
         };
       }
-      function insertSMCQT(){
+      function insertRCM(){
         var options = [];
           $('.option-input').each(function () {
             var option = new Object();
@@ -67,7 +126,7 @@
           title:$("input[name=title]").val(),
           statement:$("input[name=statement]").val(),
           question:editor.getData(),
-          type:$("select[name=type] option:selected").val(),
+          type:'passage',
           cata:$("select[name=cata] option:selected").val(),
           table:$("input[name=db]").val(),
           id:$("input[name=id]").val(),
@@ -75,13 +134,65 @@
           option:options,
          };
         }
-
-      function insertPRGOT(){
+        function insertCRE(){
+          var options = [];
+            $('.option-input').each(function () {
+              var option = new Object();
+              option.oid = $(this).attr('name');
+              option.id = $(this).attr('id');
+              option.content = $(this).val();
+              if(typeof option.oid == 'undefined') option.is_correct= $("#is_correct-"+option.id).is(":checked");
+              else option.is_correct= $("#is_correct-"+option.oid).is(":checked");
+              options.push({
+                  option});
+                  console.log("#is_correct-"+option.id);
+          });
+          return {
+            _token:$("input[name=_token]").val(),
+            title:$("input[name=title]").val(),
+            statement:$("input[name=statement]").val(),
+            question:editor.getData(),
+            type:'simple',
+            cata:$("select[name=cata] option:selected").val(),
+            table:$("input[name=db]").val(),
+            id:$("input[name=id]").val(),
+            dif:$("select[name=dif] option:selected").val(),
+            option:options,
+           };
+          }
+          function insertSCN(){
+            var options = [];
+              $('.option-input').each(function () {
+                var option = new Object();
+                option.oid = $(this).attr('name');
+                option.id = $(this).attr('id');
+                option.content = $(this).val();
+                if(typeof option.oid == 'undefined') option.is_correct= $("#is_correct-"+option.id).is(":checked");
+                else option.is_correct= $("#is_correct-"+option.oid).is(":checked");
+                options.push({
+                    option});
+                    console.log("#is_correct-"+option.id);
+            });
+            return {
+              _token:$("input[name=_token]").val(),
+              title:$("input[name=title]").val(),
+              statement:$("input[name=statement]").val(),
+              question:editor.getData(),
+              type:'simple',
+              cata:$("select[name=cata] option:selected").val(),
+              table:$("input[name=db]").val(),
+              id:$("input[name=id]").val(),
+              dif:$("select[name=dif] option:selected").val(),
+              option:options,
+             };
+            }
+      function insertAOA(){
           return { _token:$("input[name=_token]").val(),
             question:editor.getData(),
             cata:$("select[name=cata] option:selected").val(),
             table:$("input[name=db]").val(),
             id:$("input[name=id]").val(),
+            dif:'h',
            };
       }
       function getTypeOption(){

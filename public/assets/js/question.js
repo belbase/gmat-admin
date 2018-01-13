@@ -15,18 +15,34 @@ function setBMCQR(){
 function setBMCQC(){
   hideall();
 }
-function setSMCQT(){
+function setRCM(){
   hideall();
   $("#options").css('display','block');
   $("#difficulty-level").css('display','block');
-  $("#content-type").css('display','block');
+  // $("#content-type").css('display','block');
+  $("#statement").css('display','block');
+
+}
+function setCRE(){
+  hideall();
+  $("#options").css('display','block');
+  $("#difficulty-level").css('display','block');
+  // $("#content-type").css('display','block');
+  $("#statement").css('display','block');
+
+}
+function setSCN(){
+  hideall();
+  $("#options").css('display','block');
+  $("#difficulty-level").css('display','block');
+  // $("#content-type").css('display','block');
   $("#statement").css('display','block');
 
 }
 function setSTIGT(){
     hideall();
 }
-function setPRGOT(){
+function setAOA(){
     hideall();
 }
 function addOptions(){

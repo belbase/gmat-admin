@@ -112,7 +112,7 @@ return [
         'text' => 'Dashboard',
         'url'  => '',
         'icon' => 'dashboard',
-        // 'active' => [''],
+        'active' => [''],
       ],
         'MAIN NAVIGATION',
         // [
@@ -134,16 +134,16 @@ return [
                   'url'  => 'question/vb',
                   'icon_color' => 'yellow',
                 ],
-                [
-                  'text' => 'Quantitative',
-                  'url'  => 'question/qa',
-                  'icon_color' => 'green',
-                ],
-                [
-                  'text' => 'Integrated Reasoning',
-                  'url'  => 'question/ir',
-                  'icon_color' => 'red',
-                ],
+                // [
+                //   'text' => 'Quantitative',
+                //   'url'  => 'question/qa',
+                //   'icon_color' => 'green',
+                // ],
+                // [
+                //   'text' => 'Integrated Reasoning',
+                //   'url'  => 'question/ir',
+                //   'icon_color' => 'red',
+                // ],
                 // [
                 //     'text' => 'Level One',
                 //     'url'  => '#',

@@ -1,3 +1,6 @@
+
+// CKEDITOR.config.extraPlugins= 'simage';
+// CKEDITOR.config.dataParser= func(data);
 CKEDITOR.editorConfig = function( config ) {
     config.language = 'en';
     // config.uiColor = '#001F3F';
@@ -8,5 +11,10 @@ CKEDITOR.editorConfig = function( config ) {
     config.height = 360;
     config.removePlugins = 'resize';
     config.resize_enabled = false;
+
+    config.filebrowserUploadUrl = '/upload_image';
+    // Add plugin
+    config.extraPlugins = 'filebrowser';
+    config.extraPlugins = 'uploadimage';
+    config.uploadUrl = 'upload_image';
 };
-// console.log($(".opt").height);
