@@ -12,9 +12,11 @@ CKEDITOR.editorConfig = function( config ) {
     config.removePlugins = 'resize';
     config.resize_enabled = false;
 
-    config.filebrowserUploadUrl = '/upload_image';
     // Add plugin
     config.extraPlugins = 'filebrowser';
-    config.extraPlugins = 'uploadimage';
-    config.uploadUrl = 'upload_image';
+    config.filebrowserBrowseUrl = '/browse/image';
+    config.filebrowserUploadUrl = '/upload/image';
+
+    // config.extraPlugins = 'uploadimage';
+    // config.uploadUrl = '/upload/image';
 };

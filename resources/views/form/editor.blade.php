@@ -30,12 +30,8 @@
           instanceReady: loadBootstrap,
           mode: loadBootstrap
         },
-        // dataParser: imguploader(data)
       });
-      editor.config.imageUploadURL= '{{ url('/upload_image') }}';
-      editor.config.dataParser= function(data){
-        console.log(data);
-      }
+
       // Add the necessary jQuery and Bootstrap JS source so that tabs are clickable.
       // If you're already using Bootstrap JS with your editor instances, then this is not necessary.
       function loadBootstrap(event) {
@@ -55,9 +51,15 @@
             editorHead.appendChild(bootstrapScriptTag);
           };
       }
+      var ref = CKEDITOR.tools.addFunction( function() {
+        alert( 'Hello!');
+      } );
+
+      // Helper function to get parameters from the query string.
+
       editor.on( 'fileUploadRequest', function( evt ) {
         var image= this.filname;
-        var token = {{  csrf_token()}};
+        var _token = `{{--  csrf_token() --}}`;
 
         var isFileUpload = false;
         var data;
@@ -66,29 +68,21 @@
         data.append( 'image', image);
         data.append('_token',token);
 
-        var biggo = Biggo.talkToServer('upload/image', data, isFileUpload, 'post', 'text');
+        var biggo = Biggo.talkToServer('/upload/image', data, isFileUpload, 'post', 'text');
         biggo.then(function(res){
         if(res.error){
               btalert('danger','Image Not Uploaded');
               $(".loader-icon").fadeOut('slow');
             }
         else{
-            var image= "/assets//"+res;
+            var image= "/assets/uploads//"+res;
             setImagevalue(image);
             }
           });
       });
-      // function imguploader(data){
-      //   $.ajax({
-      //     url: '/question/upload',
-      //
-      //   });
-      // }
       function insertSTIGT(){
         return {
-          // statement : $("#statement").val(),
-          // option :{},
-          //
+
           other: false
           };
       }

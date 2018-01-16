@@ -18,6 +18,7 @@ Route::post('/question/store', 'QuestionController@store')->name('question-store
 Route::post('/question/update', 'QuestionController@update')->name('question-update');
 Route::post('/question/delete','QuestionController@delete')->name('question-delete');
 Route::post('/upload/image','ResourceController@uploadImages')->name('image-upload');
+Route::get('/browse/image','ResourceController@browseImages')->name('image-browse');
 
 Route::get('/question/{name}', 'QuestionController@index')->name('question-index');
 Route::get('/review/aw', 'ReviewController@index')->name('review-index');

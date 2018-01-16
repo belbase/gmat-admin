@@ -15,20 +15,25 @@ class ResourceController extends Controller
   }
   function uploadImages(Request $request)
   {
-    if($request->ajax()){
-      if ($request->hasFile('image')) {
-          $file = $request->file('image');
-          $img=$request->file('image')->store('img');
-          // $data = ['image_name'=> 'assets\\'.$img];
-          return $img; //($sub);
+      // return $request->all();
+      $_token = $request->post('ckCsrfToken');
+      $ckeditor = $request->get('CKEditor');
+      $langcode = $request->get('langcode');
+      $funcNum = $request->get('CKEditorFuncNum');
+      if ($request->hasFile('upload')) {
+          $file = $request->file('upload');
+          $img=$request->file('upload')->store('img');
+          $url = env('FRONTEND_SITE', 'http://localhost').'/assets/uploads/'.$img;
+          $message = 'The uploaded file has been renamed';
+          return view('form.image-response')->with([
+            'url'=>$url,
+            'message'=>$message,
+            'funcNum'=>$funcNum,
+          ]);
         }
-      return response()->json($request->all());
-    }
-    else{
-      $sub=$request->file('image')->store('img');
-      // $data= json_encode("{'image':'".$sub."'}");
-      var_dump($sub);
-    }
+  }
+  function browseImages(){
+    return view('form.image-browse');
   }
 }
 
