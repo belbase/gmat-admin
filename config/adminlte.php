@@ -161,22 +161,22 @@ return [
                 ],
             ],
         ],
-        'ACCOUNT SETTINGS',
-        [
-            'text' => 'Profile',
-            'url'  => '#',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => '#',
-            'icon' => 'lock',
-        ],
-        [
-            'text' => 'Manage Users',
-            'url'  => '#',
-            'icon' => 'lock',
-        ],
+        // 'ACCOUNT SETTINGS',
+        // [
+        //     'text' => 'Profile',
+        //     'url'  => '#',
+        //     'icon' => 'user',
+        // ],
+        // [
+        //     'text' => 'Change Password',
+        //     'url'  => '#',
+        //     'icon' => 'lock',
+        // ],
+        // [
+        //     'text' => 'Manage Users',
+        //     'url'  => '#',
+        //     'icon' => 'lock',
+        // ],
         // [
             // 'text'    => 'Multilevel',
             // 'icon'    => 'share',
