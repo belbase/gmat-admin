@@ -10,9 +10,16 @@ use App\Http\Requests\UploadRequest;
  */
 class ResourceController extends Controller
 {
-  public function __construct(){
-
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+      $this->middleware('auth');
   }
+  
   function uploadImages(Request $request)
   {
       // return $request->all();

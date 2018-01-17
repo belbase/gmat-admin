@@ -11,7 +11,16 @@ use Illuminate\Support\Facades\Mail;
  */
 class ReviewController extends Controller
 {
-
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+  
   /**
    * present a view, listing the review belongs to a particular question section
    *

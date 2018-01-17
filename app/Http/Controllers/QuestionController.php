@@ -9,9 +9,16 @@ use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
-    public function __construct(){
-
-    }
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+  
     public function index($db='AW'){
       $db= strtoupper($db);
       if(\App\Helper\SectionArray::checkRef($db)){
