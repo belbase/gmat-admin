@@ -23,7 +23,7 @@ class ResourceController extends Controller
       if ($request->hasFile('upload')) {
           $file = $request->file('upload');
           $img=$request->file('upload')->store('img');
-          $url = env('FRONTEND_SITE', 'http://localhost').'/assets/uploads/'.$img;
+          $url = env('FRONTEND_SITE', 'https://www.edushastra.online').'/assets/uploads/'.$img;
           $message = 'The uploaded file has been renamed';
           return view('form.image-response')->with([
             'url'=>$url,
