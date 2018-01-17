@@ -50,22 +50,22 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-      if ($exception instanceof NotFoundHttpException) {
-          if ($request->expectsJson()) {
-              return response()->json(['error' => 'Not Found'], 404);
-          }
-          return response()->view('errors.404', [
-            'title'=>"Page Not Found",
-          ], 404);
-      }
-      elseif ($exception instanceof ModelNotFoundException) {
-          if ($request->expectsJson()) {
-              return response()->json(['error' => 'Not Found'], 404);
-          }
-          return response()->view('errors.404', [
-            'title'=>"Model Not Found",
-          ], 404);
-      }
+      // if ($exception instanceof NotFoundHttpException) {
+      //     if ($request->expectsJson()) {
+      //         return response()->json(['error' => 'Not Found'], 404);
+      //     }
+      //     return response()->view('errors.404', [
+      //       'title'=>"Page Not Found",
+      //     ], 404);
+      // }
+      // elseif ($exception instanceof ModelNotFoundException) {
+      //     if ($request->expectsJson()) {
+      //         return response()->json(['error' => 'Not Found'], 404);
+      //     }
+      //     return response()->view('errors.404', [
+      //       'title'=>"Model Not Found",
+      //     ], 404);
+      // }
         return parent::render($request, $exception);
     }
 }
