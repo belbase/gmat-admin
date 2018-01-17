@@ -47,7 +47,10 @@ return [
             'driver' => 'local',
             'root' => base_path('../public/public/assets/uploads/'),
         ],
-
+        'www' => [
+            'driver' => 'local',
+            'root' => base_path('../www/public/assets/uploads/'),
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
