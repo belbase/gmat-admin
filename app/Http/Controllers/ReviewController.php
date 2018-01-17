@@ -20,13 +20,13 @@ class ReviewController extends Controller
    * @return void
    */
    public function index(){
-    $data = \App\Model\Session::where('sec_id','=','2')->get();
+    $data = \App\Model\Session::where('sec_id','=','2')->where('result','=','n')->get();
     $db = strtoupper('aw');
     return view('review.index')->with([
       'title'=> \App\Algorithm\Questions\Section::getSection($db).' Section Review',
       'data'=> $data,
       'section'=>\App\Helper\SectionArray::getNameFromRef($db),
-      'db'=>$db
+      'db'=>$db,
     ]);
   }
   /**
@@ -53,7 +53,8 @@ class ReviewController extends Controller
     //sending socre email to the user
     Mail::to($session->user->email)->send(new Score($data));
     // redirect to the listing view
-    return redirect('review/'.strtolower($data['db']))->with('success','The Email is Sucessfully sent to '.$session->user->email);
+    return redirect('review/'.strtolower($data['db']))
+    ->with('success','The Report Card is Sucessfully sent to <a href="mailto:'.$session->user->email.'">'.$session->user->name.'</a>');
   }
 }
 

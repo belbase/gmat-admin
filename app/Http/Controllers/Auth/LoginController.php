@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -44,5 +44,16 @@ class LoginController extends Controller
           'title'=>'Login',
           'request'=>$request,
         ]);
+    }
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user())
+                ?: redirect()
+                ->intended($this->redirectPath())
+                ->with('success',"You're Sucessfully Logined");
     }
 }

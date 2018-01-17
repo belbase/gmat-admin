@@ -10,7 +10,14 @@
 @stop
 
 @section('content')
-  <div class="col-md-8">
+  @if(session()->has('success'))
+  <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <h4> Alert!</h4>
+    {!! session()->get('success') !!}
+  </div>
+  @endif
+  <div class="col-md-12">
     <div class="box box-info">
       <div class="box-header with-border">
         <h3 class="box-title">Visitors</h3>
@@ -110,7 +117,10 @@ $(document).ready(function(){
        ]
    }
   lineChartOptions.datasetFill = false
-  lineChart.Line(data, lineChartOptions)
+  lineChart.Line(data, lineChartOptions);
+  $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+      $(".alert").slideUp(500);
+  });
 });
 </script>
 @stop
