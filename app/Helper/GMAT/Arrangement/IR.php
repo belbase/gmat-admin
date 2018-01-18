@@ -2,14 +2,17 @@
 namespace App\Helper\GMAT\Arrangement;
 
 
-class AW
+class IR
 {
   use Pattern;
   /**
    *
    */
   protected $subcatagory = [
-    'AOA' =>  'Analysis of Argument',
+    'MSR' =>  'Multi-Source Reasoning',
+    'GPA' =>  'Graphics Interpretation',
+    'TPA' =>  'Two-Part Analysis',
+    'TBA' =>  'Table Analysis',
   ];
   /**
    *

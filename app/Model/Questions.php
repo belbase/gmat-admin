@@ -24,7 +24,11 @@ class Questions extends Model
     {
         return $this->hasOne('App\Model\Section','id','sec_id');
     }
-    
+
+    public function passage(){
+      return $this->hasOne('App\Model\Passage', 'pid', 'pid');
+    }
+
     public function session(){
       return $this->belongsTo('App\Model\Session','qid','qid');
     }
