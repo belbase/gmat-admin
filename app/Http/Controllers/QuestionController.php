@@ -18,7 +18,7 @@ class QuestionController extends Controller
   {
       $this->middleware('auth');
   }
-  
+
     public function index($db='AW'){
       $db= strtoupper($db);
       if(\App\Helper\SectionArray::checkRef($db)){
@@ -71,6 +71,7 @@ class QuestionController extends Controller
         abort(403,"Standard Abolishment");
       }
     }
+    
     public function store(Request $request){
       if($request->ajax()){
         $data= $request->all();
