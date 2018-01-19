@@ -1,18 +1,17 @@
-{{-- include catagory here --}}
+{{-- catagory box is here --}}
 @include('form.editor-components.catagory')
 
-{{-- include catagory here --}}
+{{-- difficulty level box is here --}}
 @include('form.editor-components.dif-level')
 
-{{-- include catagory here --}}
+{{-- statement box is here --}}
 @include('form.editor-components.statement')
 
-<div class="box box-info">
-    <div class="form-group">
-      <div class="box-body with-border">
-        <button type="submit" name="submit" class="btn btn-primary" id="save"> <span class="fa fa-floppy-o"></span> Save </button>
-        <button type="reset" name="reset" class="btn btn-default" id="reset"> <span class="fa fa-trash-o"></span> Discard </button>
-      </div>
-    </div>
-  <!-- /.box-body -->
-</div>
+{{-- Option Box here --}}
+@include('form.editor-components.option')
+
+{{-- Question Box here --}}
+@include('form.editor-components.questions')
+
+{{-- Option Box here --}}
+@include('form.editor-components.publish')
