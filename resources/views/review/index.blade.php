@@ -65,7 +65,7 @@
                         </div>
                         <div class="modal-body" style="overflow-y:auto;max-height:450px;">
                           <b>Question is:</b>
-                          {!! $value->question['passage'] !!}
+                          {!! $value->question['content'] !!}
                           @if (!empty($value->answer))
                             <b>Answer is:</b>
                           @else
