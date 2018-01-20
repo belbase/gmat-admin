@@ -1,11 +1,7 @@
 <?php
 namespace App\Helper\Data;
 use \App\Model\Questions;
-/**
- * This Helper Helpes the Question Fourm to save the Question via AJAX Request
- * @package EduShastra Online Mock Test
- * @author Deepak Belbase
- */
+
 class VB
 {
   public static function save($request)
@@ -13,7 +9,7 @@ class VB
     $data = $request->all();
     $table = new Questions;
     // $table->title = $data['title'];
-    $table->passage= $data['question'];
+    $table->content= $data['question'];
     $table->cat =$data['cata'];
     $table->dif = $data['dif'];
     $table->sec_id=4;
@@ -39,7 +35,7 @@ class VB
     $data = $request->all();
     $table = Questions::findorfail($data['id']);
     // $table->title = $data['title'];
-    $table->passage= $data['question'];
+    $table->content= $data['question'];
     $table->cat =$data['cata'];
     $table->dif = $data['dif'];
     if(!empty($data['statement'])) $table->statement=$data['statement'];

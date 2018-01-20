@@ -19,7 +19,8 @@ class QuestionController extends Controller
       $this->middleware('auth');
   }
 
-    public function index($db='AW'){
+  public function index($db='AW')
+  {
       $db= strtoupper($db);
       if(\App\Helper\SectionArray::checkRef($db)){
         $arrangement= "App\Helper\GMAT\Arrangement\\".strtoupper($db);
