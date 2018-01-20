@@ -18,7 +18,7 @@
   {{-- the following block contain the codes for CK-Editor --}}
   <script type="text/javascript">
     $(document).ready(function(){
-      // initialize the CKEditor
+      {{-- initialize the CKEditor --}}
       var editor = CKEDITOR.replace('editor',{
         customConfig: '/assets/js/editor/config.js',
         extraPlugins: 'bootstrapTabs',
@@ -48,11 +48,6 @@
             editorHead.appendChild(bootstrapScriptTag);
           };
       }
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){
       addOptions();
       hideall();
       selectTypeOption();
